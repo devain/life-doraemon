@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Life: Doraemon — a catalog of gadgets that help humans evolve</title>
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --ink-soft: #4a4a4a;
+    --paper: #fafaf7;
+    --line: #e6e3dc;
+    --accent: #1e88e5;
+    --accent-soft: #e7f1fb;
+    --warn: #c2410c;
+    --code-bg: #f3f1ec;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--paper); color: var(--ink); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Noto Sans CJK SC", "Noto Sans CJK JP", "Noto Sans Devanagari", "Noto Sans Arabic", sans-serif; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+  a:hover { border-bottom-color: var(--accent); }
+  code, pre { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+  code { background: var(--code-bg); padding: 1px 6px; border-radius: 3px; font-size: 0.92em; }
+  pre { background: var(--code-bg); padding: 16px 18px; border-radius: 6px; overflow-x: auto; font-size: 0.88em; line-height: 1.5; }
+
+  .lang-bar { position: sticky; top: 0; z-index: 10; background: rgba(250,250,247,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); padding: 10px 16px; text-align: center; }
+  .lang-bar button { background: none; border: 1px solid transparent; color: var(--ink-soft); padding: 4px 10px; margin: 2px; border-radius: 999px; font: inherit; font-size: 14px; cursor: pointer; }
+  .lang-bar button:hover { color: var(--ink); }
+  .lang-bar button.active { background: var(--accent); color: #fff; }
+
+  .hero { background: linear-gradient(135deg, #1e88e5 0%, #1565c0 100%); color: #fff; padding: 56px 32px 48px; text-align: center; }
+  .hero h1 { margin: 0 0 12px; font-size: clamp(28px, 5vw, 44px); font-weight: 700; letter-spacing: -0.02em; }
+  .hero p { margin: 0 auto; max-width: 640px; font-size: clamp(15px, 2vw, 18px); opacity: 0.92; }
+  .hero .stamp { display: inline-block; margin-top: 18px; padding: 4px 12px; background: rgba(255,255,255,0.18); border-radius: 999px; font-size: 13px; letter-spacing: 0.04em; }
+
+  main { max-width: 760px; margin: 0 auto; padding: 48px 24px; }
+  h2 { font-size: 24px; margin: 48px 0 12px; letter-spacing: -0.01em; }
+  h2:first-child { margin-top: 0; }
+  h3 { font-size: 18px; margin: 28px 0 6px; }
+  p { margin: 0 0 14px; }
+  ul, ol { padding-left: 22px; }
+  li { margin-bottom: 6px; }
+
+  .lede { font-size: 18px; color: var(--ink-soft); }
+  .pull { background: var(--accent-soft); padding: 18px 22px; border-radius: 6px; border-left: 3px solid var(--accent); margin: 24px 0; }
+  .pull strong { color: var(--accent); }
+
+  .cards { display: grid; gap: 20px; margin-top: 24px; }
+  @media (min-width: 720px) { .cards { grid-template-columns: 1fr 1fr; } }
+  .card { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 22px 24px; }
+  .card h3 { margin: 0 0 4px; color: var(--accent); font-size: 19px; }
+  .card .tag { display: inline-block; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 10px; }
+
+  .test { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 22px 26px; margin: 24px 0; }
+  .test table { width: 100%; border-collapse: collapse; }
+  .test th, .test td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); font-size: 14px; vertical-align: top; }
+  .test th { font-weight: 600; color: var(--ink-soft); font-size: 13px; letter-spacing: 0.02em; }
+  .test tr:last-child td { border-bottom: 0; }
+  .test td:first-child { font-weight: 600; color: var(--accent); white-space: nowrap; padding-right: 14px; }
+
+  .lang-section { display: none; }
+  .lang-section.active { display: block; }
+  .lang-section[dir="rtl"] .test td:first-child { padding-right: 0; padding-left: 14px; }
+  .lang-section[dir="rtl"] .pull { border-left: 0; border-right: 3px solid var(--accent); }
+  .lang-section[dir="rtl"] ul, .lang-section[dir="rtl"] ol { padding-left: 0; padding-right: 22px; }
+
+  footer { padding: 36px 24px; text-align: center; color: var(--ink-soft); font-size: 14px; border-top: 1px solid var(--line); margin-top: 56px; }
+
+  @media print {
+    .lang-bar { display: none; }
+    .lang-section { display: block !important; page-break-after: always; }
+    .hero { background: #fff; color: var(--ink); padding: 24px 0; }
+    .hero .stamp { background: var(--code-bg); color: var(--ink); }
+    a { color: var(--ink); }
+    .card, .test { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="lang-bar" aria-label="Language">
+  <button data-lang="en" class="active" lang="en">English</button>
+  <button data-lang="zh" lang="zh">中文</button>
+  <button data-lang="es" lang="es">Español</button>
+  <button data-lang="hi" lang="hi">हिन्दी</button>
+  <button data-lang="ar" lang="ar">العربية</button>
+  <button data-lang="pt" lang="pt">Português</button>
+  <button data-lang="ru" lang="ru">Русский</button>
+  <button data-lang="fr" lang="fr">Français</button>
+  <button data-lang="ja" lang="ja">日本語</button>
+  <button data-lang="vi" lang="vi">Tiếng Việt</button>
+</nav>
+
+<!-- ============================== ENGLISH ============================== -->
+<div class="lang-section active" data-lang="en" lang="en">
+<section class="hero">
+  <h1>Life: Doraemon</h1>
+  <p>A real catalog of small AI gadgets, built in one day, designed so each one leaves the human <em>more capable</em>, not less.</p>
+  <span class="stamp">v0.1 · 2026-05-15 · one creator + one Claude</span>
+</section>
+<main>
+<h2>The frame</h2>
+<p class="lede">In Doraemon, the gadgets are crutches — Nobita uses them to dodge work, and the episode shows it backfiring. This catalog inverts that. Same friendly pocket-sized form. Different ethic.</p>
+<div class="pull"><strong>Every gadget must pass the evolutionary test:</strong> after using it, can the human do something they couldn't before — <em>even when the gadget isn't running</em>? If not, it's a crutch, not a gadget.</div>
+<h2>The five tests</h2>
+<div class="test"><table>
+  <tr><th style="width:22%">Test</th><th>Question</th></tr>
+  <tr><td>Capability transfer</td><td>Does it leave a skill <em>in</em> the user, or take effort away from them?</td></tr>
+  <tr><td>Reach extension</td><td>Does it expand what they can reach, or replace their own movement?</td></tr>
+  <tr><td>Teaching surface</td><td>Does it teach as it serves, or hide what's happening?</td></tr>
+  <tr><td>Long-run effect</td><td>After 1000 uses, is the human stronger or weaker?</td></tr>
+  <tr><td>Friction respect</td><td>Does it preserve the productive friction, removing only the wasteful kind?</td></tr>
+</table></div>
+<h2>The catalog (v0.1)</h2>
+<p>Four gadgets. Each is a prompt template that you paste into any Claude session — free, instant — plus an optional CLI script for running it standalone.</p>
+<div class="cards">
+  <div class="card"><span class="tag">Focus lens</span><h3>brief</h3><p><strong>Problem:</strong> Not enough time to know what AI knows.</p><p>Input a topic, a time budget, and your current context. Get back a focused brief — reasoning shown for what was included and what was cut, plus primary sources you can read directly.</p></div>
+  <div class="card"><span class="tag">Kitchen lens</span><h3>eat-what-you-have</h3><p><strong>Problem:</strong> Food waste (~1/3 of household food).</p><p>Tell it what's in your fridge. Get back a meal you can make now from what's there — plus which items are about to expire, and a backup meal for the week.</p></div>
+  <div class="card"><span class="tag">Peace move</span><h3>steelman</h3><p><strong>Problem:</strong> Conflict escalates when each side argues against the weakest version of the other.</p><p>Paste an opposing view. Get its strongest honest form — including the values it serves, weaknesses that survive the steelmanning, and what you'd need to accept to find it compelling.</p></div>
+  <div class="card"><span class="tag">Meta-gadget</span><h3>build-your-own-gadget</h3><p><strong>Problem:</strong> Most people don't think their daily pains are tool-able.</p><p>Describe a pain. Get back the smallest possible tool that dissolves it, with the design reasoning shown — so you start running the move yourself.</p></div>
+</div>
+<h2>Why this exists</h2>
+<p>The four gadgets above aren't the point. They're proof that <em>a real catalog is buildable in one day</em>, by one person, with one Claude as the cognition gadget in the pocket. The point is the pattern: pick a human limitation, design the smallest dissolution that teaches as it serves, ship it, iterate.</p>
+<div class="pull" style="background: #fff7ed; border-left-color: var(--warn); color: var(--ink);"><strong>One honest caveat.</strong> AI collapses the cognition column of human limitation — drafting, designing, prototyping, research — and only that column. Physics, energy, materials, will, money, audience: untouched. These gadgets are powerful in their column. They are not Doraemon's anywhere-door.</div>
+</main>
+</div>
+
+<!-- ============================== 中文 ============================== -->
+<div class="lang-section" data-lang="zh" lang="zh-CN">
+<section class="hero">
+  <h1>生活:哆啦A梦</h1>
+  <p>一份真实的小型AI道具目录,一天内建成。每个道具的设计原则:让人类<em>更有能力</em>,而非更少。</p>
+  <span class="stamp">v0.1 · 2026-05-15 · 一位创造者 + 一个Claude</span>
+</section>
+<main>
+<h2>核心理念</h2>
+<p class="lede">在《哆啦A梦》原作里,道具其实是拐杖——大雄用它们逃避努力,而每集的结局往往是道具反咬一口。这份目录把它反过来。一样小巧友好的口袋形态,完全不同的伦理。</p>
+<div class="pull"><strong>每个道具必须通过"进化测试":</strong>使用之后,人类是否能做到之前做不到的事——<em>即使道具不在身边</em>?如果答案是否定的,那它就是拐杖,不是道具。</div>
+<h2>五项测试</h2>
+<div class="test"><table>
+  <tr><th style="width:30%">测试</th><th>问题</th></tr>
+  <tr><td>能力转移</td><td>它把技能<em>留在</em>使用者身上,还是替他省去了努力?</td></tr>
+  <tr><td>触及拓展</td><td>它扩大了使用者能触及的范围,还是替代了他自己的动作?</td></tr>
+  <tr><td>教学面</td><td>它在服务的同时展示推理过程,还是把过程藏起来?</td></tr>
+  <tr><td>长期影响</td><td>用了1000次之后,人变强了还是变弱了?</td></tr>
+  <tr><td>尊重摩擦</td><td>它保留了有益的摩擦,只去掉无谓的部分吗?</td></tr>
+</table></div>
+<h2>目录(v0.1)</h2>
+<p>四个道具。每个都是可以粘贴进任何Claude对话的提示词模板——免费,即时——外加一个可选的命令行脚本,供独立运行。</p>
+<div class="cards">
+  <div class="card"><span class="tag">聚焦镜</span><h3>brief</h3><p><strong>问题:</strong>没时间了解AI知道的一切。</p><p>输入一个话题、时间预算、你现有的背景。返回一份聚焦简报——展示了什么被纳入、什么被剔除,并列出你可以直接阅读的一手资料。</p></div>
+  <div class="card"><span class="tag">厨房镜</span><h3>eat-what-you-have</h3><p><strong>问题:</strong>食物浪费(约占家庭食材的三分之一)。</p><p>告诉它冰箱里有什么。返回一份现在就能做的菜——加上哪些食材即将过期,以及一份本周的备选菜单。</p></div>
+  <div class="card"><span class="tag">和平之招</span><h3>steelman</h3><p><strong>问题:</strong>当各方只针对对方最弱的版本辩论时,冲突就升级了。</p><p>粘贴一个反对观点。返回它最强、最诚实的版本——包括它所服务的价值、即使强化后依然存在的弱点、以及你需要接受什么才会觉得它有说服力。</p></div>
+  <div class="card"><span class="tag">元道具</span><h3>build-your-own-gadget</h3><p><strong>问题:</strong>大多数人没意识到自己的日常痛点是可以"工具化"的。</p><p>描述一个痛点。返回能化解它的最小工具,并展示设计推理——让你自己也开始掌握这套设计方法。</p></div>
+</div>
+<h2>为什么发布</h2>
+<p>上面四个道具不是重点。它们是证明:<em>一份真实的目录,一天内、一个人、一个Claude作为口袋里的认知道具,就能建成。</em>重点是这种模式:挑出一项人类局限,设计能在服务中传授的最小化解方式,发布它,迭代。</p>
+<div class="pull" style="background: #fff7ed; border-left-color: var(--warn); color: var(--ink);"><strong>一个诚实的告诫。</strong>AI塌缩的只是人类局限中的"认知"这一栏——起草、设计、原型、研究——仅此而已。物理、能量、材料、意志、金钱、受众:都未被触及。这些道具在它们的栏目里很强大,但它们不是哆啦A梦的任意门。</div>
+</main>
+</div>
+
+<!-- ============================== ESPAÑOL ============================== -->
+<div class="lang-section" data-lang="es" lang="es">
+<section class="hero">
+  <h1>Vida: Doraemon</h1>
+  <p>Un catálogo real de pequeños gadgets de IA, construido en un día, diseñados para que cada uno deje al humano <em>más capaz</em>, no menos.</p>
+  <span class="stamp">v0.1 · 2026-05-15 · un creador + un Claude</span>
+</section>
+<main>
+<h2>El marco</h2>
+<p class="lede">En Doraemon, los gadgets son muletas: Nobita los usa para esquivar el esfuerzo, y cada episodio muestra cómo el atajo se vuelve en su contra. Este catálogo invierte eso. Mismo formato amistoso de bolsillo. Ética opuesta.</p>
+<div class="pull"><strong>Cada gadget debe pasar la prueba evolutiva:</strong> después de usarlo, ¿puede el humano hacer algo que antes no podía — <em>incluso cuando el gadget no está funcionando</em>? Si no, es muleta, no gadget.</div>
+<h2>Las cinco pruebas</h2>
+<div class="test"><table>
+  <tr><th style="width:28%">Prueba</th><th>Pregunta</th></tr>
+  <tr><td>Transferencia de capacidad</td><td>¿Deja una habilidad <em>en</em> el usuario, o le quita el esfuerzo?</td></tr>
+  <tr><td>Extensión de alcance</td><td>¿Expande lo que puede alcanzar, o reemplaza su propio movimiento?</td></tr>
+  <tr><td>Superficie pedagógica</td><td>¿Enseña mientras sirve, o esconde lo que sucede?</td></tr>
+  <tr><td>Efecto a largo plazo</td><td>Tras 1000 usos, ¿el humano queda más fuerte o más débil?</td></tr>
+  <tr><td>Respeto a la fricción</td><td>¿Preserva la fricción productiva y elimina sólo la inútil?</td></tr>
+</table></div>
+<h2>El catálogo (v0.1)</h2>
+<p>Cuatro gadgets. Cada uno es una plantilla de prompt que pegas en cualquier sesión de Claude — gratis, instantáneo — más un script CLI opcional para ejecutarlo de forma autónoma.</p>
+<div class="cards">
+  <div class="card"><span class="tag">Lente de enfoque</span><h3>brief</h3><p><strong>Problema:</strong> No alcanza el tiempo para saber lo que la IA sabe.</p><p>Entrega un tema, un presupuesto de tiempo y tu contexto actual. Recibe un brief enfocado — con el razonamiento de qué se incluyó y qué se cortó, más fuentes primarias para leer directamente.</p></div>
+  <div class="card"><span class="tag">Lente de cocina</span><h3>eat-what-you-have</h3><p><strong>Problema:</strong> Desperdicio de alimentos (~1/3 de la comida del hogar).</p><p>Dile qué hay en la nevera. Recibe una receta que puedes hacer ahora mismo con lo que tienes — junto con qué está por caducar y un plato de respaldo para la semana.</p></div>
+  <div class="card"><span class="tag">Movimiento de paz</span><h3>steelman</h3><p><strong>Problema:</strong> El conflicto escala cuando cada bando ataca la versión más débil del otro.</p><p>Pega una opinión opuesta. Recibe su forma más fuerte y honesta — incluyendo los valores a los que sirve, las debilidades que sobreviven, y qué tendrías que aceptar para encontrarla convincente.</p></div>
+  <div class="card"><span class="tag">Meta-gadget</span><h3>build-your-own-gadget</h3><p><strong>Problema:</strong> La mayoría no ve que sus molestias diarias son "herramientizables".</p><p>Describe una molestia. Recibe la herramienta más pequeña posible que la disuelva, con el razonamiento de diseño expuesto — para que empieces a hacer el movimiento por tu cuenta.</p></div>
+</div>
+<h2>Por qué publicarlo</h2>
+<p>Los cuatro gadgets de arriba no son el punto. Son la prueba de que <em>un catálogo real es construible en un día</em>, por una persona, con un Claude como gadget cognitivo en el bolsillo. El punto es el patrón: elige una limitación humana, diseña la disolución más pequeña que enseñe mientras sirve, publícala, itera.</p>
+<div class="pull" style="background: #fff7ed; border-left-color: var(--warn); color: var(--ink);"><strong>Una advertencia honesta.</strong> La IA colapsa la columna cognitiva de la limitación humana — redacción, diseño, prototipado, investigación — y sólo esa. Física, energía, materiales, voluntad, dinero, audiencia: intactas. Estos gadgets son poderosos en su columna. No son la puerta-a-cualquier-parte de Doraemon.</div>
+</main>
+</div>
+
+<!-- ============================== हिन्दी ============================== -->
+<div class="lang-section" data-lang="hi" lang="hi">
+<section class="hero">
+  <h1>जीवन: डोरेमॉन</h1>
+  <p>छोटे AI गैजेट्स की एक असली कैटलॉग, एक दिन में बनाई गई। हर गैजेट इस तरह डिज़ाइन किया गया है कि उपयोगकर्ता <em>अधिक सक्षम</em> बने, कम नहीं।</p>
+  <span class="stamp">v0.1 · 2026-05-15 · एक रचनाकार + एक Claude</span>
+</section>
+<main>
+<h2>मूल विचार</h2>
+<p class="lede">डोरेमॉन में गैजेट्स असल में बैसाखियाँ हैं — नोबिता उन्हें मेहनत से बचने के लिए इस्तेमाल करता है, और हर कड़ी दिखाती है कि शॉर्टकट कैसे उल्टा पड़ता है। यह कैटलॉग इसे उल्टा करती है। वही दोस्ताना जेब के आकार का रूप। उल्टी नैतिकता।</p>
+<div class="pull"><strong>हर गैजेट को विकासात्मक परीक्षण पास करना ज़रूरी है:</strong> उपयोग करने के बाद, क्या इंसान वह कर सकता है जो पहले नहीं कर सकता था — <em>तब भी जब गैजेट चालू नहीं है</em>? यदि नहीं, तो वह बैसाखी है, गैजेट नहीं।</div>
+<h2>पाँच परीक्षण</h2>
+<div class="test"><table>
+  <tr><th style="width:30%">परीक्षण</th><th>प्रश्न</th></tr>
+  <tr><td>क्षमता हस्तांतरण</td><td>क्या यह कौशल उपयोगकर्ता <em>में</em> छोड़ता है, या उसकी मेहनत छीन लेता है?</td></tr>
+  <tr><td>पहुँच विस्तार</td><td>क्या यह उसकी पहुँच बढ़ाता है, या उसकी अपनी गति की जगह लेता है?</td></tr>
+  <tr><td>शिक्षण सतह</td><td>क्या यह सेवा करते हुए सिखाता है, या जो हो रहा है उसे छुपाता है?</td></tr>
+  <tr><td>दीर्घकालिक प्रभाव</td><td>1000 बार उपयोग के बाद, इंसान मज़बूत हुआ या कमज़ोर?</td></tr>
+  <tr><td>घर्षण का सम्मान</td><td>क्या यह उपयोगी घर्षण को बचाता है, केवल बेकार वाला हटाता है?</td></tr>
+</table></div>
+<h2>कैटलॉग (v0.1)</h2>
+<p>चार गैजेट। हर एक एक प्रॉम्प्ट टेम्पलेट है जिसे आप किसी भी Claude सत्र में पेस्ट कर सकते हैं — मुफ़्त, तुरंत — साथ ही स्वतंत्र रूप से चलाने के लिए वैकल्पिक CLI स्क्रिप्ट।</p>
+<div class="cards">
+  <div class="card"><span class="tag">फ़ोकस लेंस</span><h3>brief</h3><p><strong>समस्या:</strong> जो AI जानता है उसे जानने का समय नहीं।</p><p>एक विषय, समय-बजट, और अपना वर्तमान संदर्भ डालें। एक केंद्रित ब्रीफ़ वापस पाएँ — क्यों ये बातें जोड़ी गईं और क्या काटा गया, इसकी तर्क-व्याख्या, साथ ही पढ़ने के लिए मूल स्रोत।</p></div>
+  <div class="card"><span class="tag">रसोई लेंस</span><h3>eat-what-you-have</h3><p><strong>समस्या:</strong> भोजन की बर्बादी (घर में करीब एक-तिहाई)।</p><p>फ्रिज में क्या है बताएँ। अभी बनाई जा सकने वाली एक डिश पाएँ — साथ ही कौन सी चीज़ें जल्दी खराब होंगी, और हफ़्ते के लिए एक वैकल्पिक डिश।</p></div>
+  <div class="card"><span class="tag">शांति-चाल</span><h3>steelman</h3><p><strong>समस्या:</strong> जब हर पक्ष सामने वाले के सबसे कमज़ोर रूप से लड़ता है, तब टकराव बढ़ता है।</p><p>विरोधी दृष्टिकोण पेस्ट करें। उसका सबसे मज़बूत, ईमानदार रूप पाएँ — वह कौन से मूल्यों की सेवा करता है, मज़बूती के बाद भी जो कमज़ोरियाँ बचती हैं, और किस बात को स्वीकार करना होगा कि वह आपको मनाने लगे।</p></div>
+  <div class="card"><span class="tag">मेटा-गैजेट</span><h3>build-your-own-gadget</h3><p><strong>समस्या:</strong> ज़्यादातर लोग नहीं सोचते कि उनकी रोज़ की परेशानियाँ औज़ार-योग्य हैं।</p><p>एक परेशानी का वर्णन करें। उसे घोलने वाला सबसे छोटा संभव औज़ार पाएँ, डिज़ाइन-तर्क के साथ — ताकि आप खुद यह चाल चलाने लगें।</p></div>
+</div>
+<h2>यह क्यों है</h2>
+<p>ऊपर के चार गैजेट्स मुख्य बात नहीं हैं। वे प्रमाण हैं कि <em>एक असली कैटलॉग एक दिन में बनाई जा सकती है</em>, एक व्यक्ति द्वारा, जेब में एक Claude के साथ। मुख्य बात है पैटर्न: एक मानवीय सीमा चुनें, सेवा करते हुए सिखाने वाला सबसे छोटा समाधान डिज़ाइन करें, उसे साझा करें, सुधारते जाएँ।</p>
+<div class="pull" style="background: #fff7ed; border-left-color: var(--warn); color: var(--ink);"><strong>एक ईमानदार चेतावनी।</strong> AI मानवीय सीमाओं की सिर्फ़ "अनुभूति" वाली कॉलम को तोड़ता है — मसौदा, डिज़ाइन, प्रोटोटाइप, शोध — और बस वही। भौतिकी, ऊर्जा, सामग्री, इच्छाशक्ति, धन, श्रोता: अछूते। ये गैजेट अपनी कॉलम में शक्तिशाली हैं। ये डोरेमॉन के "कहीं भी द्वार" नहीं हैं।</div>
+</main>
+</div>
+
+<!-- ============================== العربية ============================== -->
+<div class="lang-section" data-lang="ar" lang="ar" dir="rtl">
+<section class="hero">
+  <h1>الحياة: دوريمون</h1>
+  <p>دليل حقيقي لأدوات ذكاء اصطناعي صغيرة، بُني في يوم واحد، صُمّم بحيث يجعل كل أداة الإنسانَ <em>أكثر قدرة</em>، لا أقل.</p>
+  <span class="stamp">v0.1 · 2026-05-15 · مبتكر واحد + Claude واحد</span>
+</section>
+<main>
+<h2>الإطار</h2>
+<p class="lede">في دوريمون، الأدوات في حقيقتها عكازات — يستخدمها نوبيتا للتهرب من الجهد، وكل حلقة تُظهر كيف يرتد المختصر عليه. هذا الدليل يقلب هذه المعادلة. الشكل الجيبي الودود نفسه. أخلاقيات مختلفة.</p>
+<div class="pull"><strong>على كل أداة أن تجتاز اختبار التطور:</strong> بعد استخدامها، هل يستطيع الإنسان فعل شيء لم يكن يستطيعه من قبل — <em>حتى عندما لا تعمل الأداة</em>؟ إن لم يكن، فهي عكاز، لا أداة.</div>
+<h2>الاختبارات الخمسة</h2>
+<div class="test"><table>
+  <tr><th style="width:28%">الاختبار</th><th>السؤال</th></tr>
+  <tr><td>نقل القدرة</td><td>هل تترك مهارة <em>داخل</em> المستخدم، أم تنزع منه الجهد؟</td></tr>
+  <tr><td>توسيع المدى</td><td>هل توسّع ما يستطيع الوصول إليه، أم تستبدل حركته الخاصة؟</td></tr>
+  <tr><td>السطح التعليمي</td><td>هل تُعلّم وهي تخدم، أم تخفي ما يحدث؟</td></tr>
+  <tr><td>الأثر بعيد المدى</td><td>بعد ألف استخدام، أصبح الإنسان أقوى أم أضعف؟</td></tr>
+  <tr><td>احترام الاحتكاك</td><td>هل تحفظ الاحتكاك المنتج وتزيل فقط الاحتكاك العقيم؟</td></tr>
+</table></div>
+<h2>الدليل (v0.1)</h2>
+<p>أربع أدوات. كل واحدة قالب أمر تلصقه في أي جلسة Claude — مجاناً، فوريّاً — مع سكربت سطر أوامر اختياري للتشغيل المستقل.</p>
+<div class="cards">
+  <div class="card"><span class="tag">عدسة التركيز</span><h3>brief</h3><p><strong>المشكلة:</strong> لا يوجد وقت كافٍ لمعرفة ما يعرفه الذكاء الاصطناعي.</p><p>أدخل موضوعاً، ميزانية وقت، وسياقك الحالي. تستعيد ملخصاً مركّزاً — مع شرح ما أُدرج وما حُذف، إضافة إلى مصادر أولية تستطيع قراءتها مباشرة.</p></div>
+  <div class="card"><span class="tag">عدسة المطبخ</span><h3>eat-what-you-have</h3><p><strong>المشكلة:</strong> هدر الطعام (نحو ثلث طعام المنزل).</p><p>أخبرها بما في ثلاجتك. تستعيد وجبة تستطيع طبخها الآن من المتاح — إلى جانب ما هو على وشك الفساد، ووجبة احتياطية للأسبوع.</p></div>
+  <div class="card"><span class="tag">حركة السلام</span><h3>steelman</h3><p><strong>المشكلة:</strong> الصراع يتصاعد حين يهاجم كل طرف أضعف صور الآخر.</p><p>الصق رأياً معارضاً. تستعيد أقوى صورة صادقة له — بما فيها القيم التي يخدمها، ونقاط الضعف التي تبقى رغم التقوية، وما يلزمك قبوله لتجده مقنعاً.</p></div>
+  <div class="card"><span class="tag">الأداة الميتا</span><h3>build-your-own-gadget</h3><p><strong>المشكلة:</strong> معظم الناس لا يرون أن متاعبهم اليومية قابلة للحل بأداة.</p><p>صف متعباً. تستعيد أصغر أداة ممكنة تذيبه، مع شرح التصميم — لتبدأ أنت في إجراء الحركة بنفسك.</p></div>
+</div>
+<h2>لماذا نُشر هذا</h2>
+<p>الأدوات الأربع أعلاه ليست المقصد. هي دليل على أن <em>دليلاً حقيقياً قابل للبناء في يوم واحد</em>، بشخص واحد، مع Claude واحد كأداة معرفية في الجيب. المقصد هو النمط: اختر حدّاً إنسانياً، صمّم أصغر حل يُعلّم بينما يخدم، انشره، طوّره.</p>
+<div class="pull" style="background: #fff7ed; border-right-color: var(--warn); color: var(--ink);"><strong>تحفظ صادق.</strong> الذكاء الاصطناعي يطوي عمود الإدراك من حدود الإنسان — الصياغة، التصميم، النموذج، البحث — وهذا العمود فقط. الفيزياء، الطاقة، المواد، الإرادة، المال، الجمهور: لم تُمسّ. هذه الأدوات قوية في عمودها. وهي ليست باب-أي-مكان لدوريمون.</div>
+</main>
+</div>
+
+<!-- ============================== PORTUGUÊS ============================== -->
+<div class="lang-section" data-lang="pt" lang="pt">
+<section class="hero">
+  <h1>Vida: Doraemon</h1>
+  <p>Um catálogo real de pequenos gadgets de IA, construído em um dia, projetados para deixar o humano <em>mais capaz</em> após cada uso, não menos.</p>
+  <span class="stamp">v0.1 · 2026-05-15 · um criador + um Claude</span>
+</section>
+<main>
+<h2>O enquadramento</h2>
+<p class="lede">Em Doraemon, os gadgets são muletas — Nobita os usa para fugir do esforço, e cada episódio mostra o atalho voltando-se contra ele. Este catálogo inverte isso. Mesmo formato amigável de bolso. Ética oposta.</p>
+<div class="pull"><strong>Todo gadget precisa passar no teste evolutivo:</strong> depois de usá-lo, o humano consegue fazer algo que antes não conseguia — <em>mesmo quando o gadget não está rodando</em>? Se não, é muleta, não gadget.</div>
+<h2>Os cinco testes</h2>
+<div class="test"><table>
+  <tr><th style="width:28%">Teste</th><th>Pergunta</th></tr>
+  <tr><td>Transferência de capacidade</td><td>Deixa uma habilidade <em>no</em> usuário, ou retira o esforço dele?</td></tr>
+  <tr><td>Extensão de alcance</td><td>Expande o que ele alcança, ou substitui o próprio movimento?</td></tr>
+  <tr><td>Superfície pedagógica</td><td>Ensina enquanto serve, ou esconde o que acontece?</td></tr>
+  <tr><td>Efeito de longo prazo</td><td>Após 1000 usos, o humano está mais forte ou mais fraco?</td></tr>
+  <tr><td>Respeito à fricção</td><td>Preserva a fricção produtiva, removendo só a desperdiçada?</td></tr>
+</table></div>
+<h2>O catálogo (v0.1)</h2>
+<p>Quatro gadgets. Cada um é um template de prompt que você cola em qualquer sessão do Claude — grátis, instantâneo — mais um script CLI opcional para rodar de forma autônoma.</p>
+<div class="cards">
+  <div class="card"><span class="tag">Lente de foco</span><h3>brief</h3><p><strong>Problema:</strong> Não há tempo para saber o que a IA sabe.</p><p>Forneça um tópico, um orçamento de tempo e seu contexto atual. Receba um brief focado — com o raciocínio do que entrou e do que foi cortado, mais fontes primárias para ler diretamente.</p></div>
+  <div class="card"><span class="tag">Lente da cozinha</span><h3>eat-what-you-have</h3><p><strong>Problema:</strong> Desperdício de comida (~1/3 do que entra em casa).</p><p>Diga o que tem na geladeira. Receba um prato que dá para fazer agora — junto com o que está prestes a vencer e um prato reserva para a semana.</p></div>
+  <div class="card"><span class="tag">Movimento de paz</span><h3>steelman</h3><p><strong>Problema:</strong> O conflito escala quando cada lado ataca a versão mais fraca do outro.</p><p>Cole uma visão oposta. Receba a forma mais forte e honesta dela — incluindo os valores que ela serve, fraquezas que sobrevivem ao steelman, e o que você teria de aceitar para achá-la convincente.</p></div>
+  <div class="card"><span class="tag">Meta-gadget</span><h3>build-your-own-gadget</h3><p><strong>Problema:</strong> A maioria não percebe que suas dores cotidianas são "ferramentáveis".</p><p>Descreva uma dor. Receba a menor ferramenta possível que a dissolva, com o raciocínio de design exposto — para você começar a fazer o movimento sozinho.</p></div>
+</div>
+<h2>Por que publicar</h2>
+<p>Os quatro gadgets acima não são o ponto. São prova de que <em>um catálogo real é construível em um dia</em>, por uma pessoa, com um Claude como gadget de cognição no bolso. O ponto é o padrão: escolha uma limitação humana, projete a menor dissolução que ensina enquanto serve, publique, itere.</p>
+<div class="pull" style="background: #fff7ed; border-left-color: var(--warn); color: var(--ink);"><strong>Uma ressalva honesta.</strong> A IA colapsa a coluna cognitiva da limitação humana — redação, design, prototipagem, pesquisa — e só essa. Física, energia, materiais, vontade, dinheiro, audiência: intocadas. Estes gadgets são poderosos na coluna deles. Não são a porta-para-qualquer-lugar do Doraemon.</div>
+</main>
+</div>
+
+<!-- ============================== РУССКИЙ ============================== -->
+<div class="lang-section" data-lang="ru" lang="ru">
+<section class="hero">
+  <h1>Жизнь: Дораэмон</h1>
+  <p>Реальный каталог небольших AI-гаджетов, собранный за один день. Каждый из них спроектирован так, чтобы делать человека <em>более способным</em>, а не менее.</p>
+  <span class="stamp">v0.1 · 2026-05-15 · один создатель + один Claude</span>
+</section>
+<main>
+<h2>Рамка</h2>
+<p class="lede">В «Дораэмоне» гаджеты — это, по сути, костыли: Нобита использует их, чтобы избежать усилий, и каждая серия показывает, как короткий путь оборачивается против него. Этот каталог переворачивает эту логику. Та же дружелюбная карманная форма. Противоположная этика.</p>
+<div class="pull"><strong>Каждый гаджет должен пройти эволюционный тест:</strong> после его использования, может ли человек делать то, чего не мог раньше — <em>даже когда гаджет не запущен</em>? Если нет — это костыль, а не гаджет.</div>
+<h2>Пять тестов</h2>
+<div class="test"><table>
+  <tr><th style="width:30%">Тест</th><th>Вопрос</th></tr>
+  <tr><td>Передача способности</td><td>Оставляет ли он навык <em>в</em> пользователе или отбирает усилие?</td></tr>
+  <tr><td>Расширение охвата</td><td>Расширяет ли то, до чего пользователь дотягивается, или заменяет его собственное движение?</td></tr>
+  <tr><td>Обучающая поверхность</td><td>Учит ли он, пока служит, или скрывает происходящее?</td></tr>
+  <tr><td>Долгосрочный эффект</td><td>После 1000 использований человек сильнее или слабее?</td></tr>
+  <tr><td>Уважение к трению</td><td>Сохраняет ли продуктивное трение, убирая только бесполезное?</td></tr>
+</table></div>
+<h2>Каталог (v0.1)</h2>
+<p>Четыре гаджета. Каждый — шаблон промпта, который вы вставляете в любую сессию Claude — бесплатно, мгновенно — плюс опциональный CLI-скрипт для автономного запуска.</p>
+<div class="cards">
+  <div class="card"><span class="tag">Фокус-линза</span><h3>brief</h3><p><strong>Проблема:</strong> Не хватает времени знать то, что знает AI.</p><p>Введите тему, бюджет времени и текущий контекст. Получите сфокусированный бриф — с объяснением, что включено и что вырезано, плюс первичные источники для прямого чтения.</p></div>
+  <div class="card"><span class="tag">Кухонная линза</span><h3>eat-what-you-have</h3><p><strong>Проблема:</strong> Пищевые отходы (~1/3 домашней еды).</p><p>Скажите, что есть в холодильнике. Получите блюдо, которое можно приготовить прямо сейчас — плюс что скоро испортится, и запасное блюдо на неделю.</p></div>
+  <div class="card"><span class="tag">Ход к миру</span><h3>steelman</h3><p><strong>Проблема:</strong> Конфликт разрастается, когда каждая сторона спорит со слабейшей версией другой.</p><p>Вставьте противоположную точку зрения. Получите её самую сильную, честную форму — с ценностями, которым она служит, слабостями, которые остаются даже после усиления, и тем, что нужно принять, чтобы найти её убедительной.</p></div>
+  <div class="card"><span class="tag">Мета-гаджет</span><h3>build-your-own-gadget</h3><p><strong>Проблема:</strong> Большинство людей не видят, что их ежедневные неудобства поддаются инструменту.</p><p>Опишите проблему. Получите самый маленький возможный инструмент, который её растворит, с явной логикой проектирования — чтобы вы сами начали делать этот ход.</p></div>
+</div>
+<h2>Зачем это публикуется</h2>
+<p>Четыре гаджета выше — не главное. Они — доказательство, что <em>реальный каталог можно собрать за один день</em>, одним человеком, с одним Claude в качестве когнитивного гаджета в кармане. Главное — паттерн: выберите человеческое ограничение, спроектируйте наименьшее растворение, которое учит, пока служит, опубликуйте, итерируйте.</p>
+<div class="pull" style="background: #fff7ed; border-left-color: var(--warn); color: var(--ink);"><strong>Честная оговорка.</strong> AI схлопывает только когнитивную колонку человеческих ограничений — черновики, дизайн, прототипирование, исследования — и только её. Физика, энергия, материалы, воля, деньги, аудитория: нетронуты. Эти гаджеты сильны в своей колонке. Они — не «дверь куда угодно» Дораэмона.</div>
+</main>
+</div>
+
+<!-- ============================== FRANÇAIS ============================== -->
+<div class="lang-section" data-lang="fr" lang="fr">
+<section class="hero">
+  <h1>Vie : Doraemon</h1>
+  <p>Un vrai catalogue de petits gadgets d'IA, construit en un jour, conçus pour que chacun rende l'humain <em>plus capable</em>, pas moins.</p>
+  <span class="stamp">v0.1 · 2026-05-15 · un créateur + un Claude</span>
+</section>
+<main>
+<h2>Le cadre</h2>
+<p class="lede">Dans Doraemon, les gadgets sont des béquilles : Nobita s'en sert pour esquiver l'effort, et chaque épisode montre comment le raccourci se retourne contre lui. Ce catalogue inverse cela. Même forme amicale de poche. Éthique opposée.</p>
+<div class="pull"><strong>Chaque gadget doit passer le test évolutif :</strong> après l'avoir utilisé, l'humain peut-il faire quelque chose qu'il ne pouvait pas avant — <em>même quand le gadget ne tourne pas</em> ? Sinon, c'est une béquille, pas un gadget.</div>
+<h2>Les cinq tests</h2>
+<div class="test"><table>
+  <tr><th style="width:30%">Test</th><th>Question</th></tr>
+  <tr><td>Transfert de compétence</td><td>Laisse-t-il une compétence <em>dans</em> l'utilisateur, ou lui ôte-t-il l'effort ?</td></tr>
+  <tr><td>Extension de portée</td><td>Étend-il ce qu'il peut atteindre, ou remplace-t-il son propre mouvement ?</td></tr>
+  <tr><td>Surface pédagogique</td><td>Enseigne-t-il en servant, ou cache-t-il ce qui se passe ?</td></tr>
+  <tr><td>Effet à long terme</td><td>Après 1000 usages, l'humain est-il plus fort ou plus faible ?</td></tr>
+  <tr><td>Respect des frictions</td><td>Préserve-t-il les frictions productives, n'enlevant que les inutiles ?</td></tr>
+</table></div>
+<h2>Le catalogue (v0.1)</h2>
+<p>Quatre gadgets. Chacun est un template de prompt que vous collez dans n'importe quelle session Claude — gratuit, instantané — plus un script CLI optionnel pour un usage autonome.</p>
+<div class="cards">
+  <div class="card"><span class="tag">Lentille de focalisation</span><h3>brief</h3><p><strong>Problème :</strong> Pas assez de temps pour savoir ce que l'IA sait.</p><p>Donnez un sujet, un budget temps et votre contexte actuel. Recevez un brief ciblé — avec le raisonnement de ce qui est inclus et écarté, plus des sources primaires à lire directement.</p></div>
+  <div class="card"><span class="tag">Lentille cuisine</span><h3>eat-what-you-have</h3><p><strong>Problème :</strong> Le gaspillage alimentaire (~1/3 de la nourriture du foyer).</p><p>Dites-lui ce qu'il y a dans le frigo. Recevez un plat à cuisiner maintenant — avec ce qui va périmer et un plat de secours pour la semaine.</p></div>
+  <div class="card"><span class="tag">Geste de paix</span><h3>steelman</h3><p><strong>Problème :</strong> Le conflit s'envenime quand chaque camp combat la version la plus faible de l'autre.</p><p>Collez une opinion adverse. Recevez sa forme la plus forte et honnête — avec les valeurs qu'elle sert, les faiblesses qui survivent au renforcement, et ce qu'il faudrait accepter pour la trouver convaincante.</p></div>
+  <div class="card"><span class="tag">Méta-gadget</span><h3>build-your-own-gadget</h3><p><strong>Problème :</strong> La plupart des gens ne voient pas que leurs irritations quotidiennes sont « outillables ».</p><p>Décrivez une douleur. Recevez le plus petit outil possible qui la dissout, avec le raisonnement de design exposé — pour que vous commenciez à faire le geste vous-même.</p></div>
+</div>
+<h2>Pourquoi le publier</h2>
+<p>Les quatre gadgets ci-dessus ne sont pas le sujet. Ils prouvent qu'<em>un vrai catalogue est constructible en un jour</em>, par une personne, avec un Claude comme gadget cognitif dans la poche. Le sujet, c'est le motif : choisissez une limite humaine, concevez la plus petite dissolution qui enseigne en servant, publiez-la, itérez.</p>
+<div class="pull" style="background: #fff7ed; border-left-color: var(--warn); color: var(--ink);"><strong>Un avertissement honnête.</strong> L'IA effondre uniquement la colonne « cognition » des limites humaines — rédaction, design, prototypage, recherche — et seulement celle-ci. Physique, énergie, matériaux, volonté, argent, audience : intacts. Ces gadgets sont puissants dans leur colonne. Ils ne sont pas la porte-vers-n'importe-où de Doraemon.</div>
+</main>
+</div>
+
+<!-- ============================== 日本語 ============================== -->
+<div class="lang-section" data-lang="ja" lang="ja">
+<section class="hero">
+  <h1>ライフ:ドラえもん</h1>
+  <p>一日で作った、AI道具のリアルなカタログ。それぞれが、使った人を<em>より有能に</em>するように設計されている — 弱くするのではなく。</p>
+  <span class="stamp">v0.1 · 2026-05-15 · 一人の創り手 + 一人のClaude</span>
+</section>
+<main>
+<h2>枠組み</h2>
+<p class="lede">『ドラえもん』では、ひみつ道具はじつのところ松葉杖だ — のび太が努力を避けるために使い、エピソードは決まって近道が裏目に出る。このカタログはそれを反転させる。同じやさしいポケットサイズ。逆の倫理。</p>
+<div class="pull"><strong>すべての道具は「進化テスト」を通らねばならない:</strong>使ったあと、人間は以前できなかったことを <em>道具が動いていなくても</em> できるようになるか?ならないなら、それは道具ではなく松葉杖だ。</div>
+<h2>5つのテスト</h2>
+<div class="test"><table>
+  <tr><th style="width:30%">テスト</th><th>問い</th></tr>
+  <tr><td>能力の転移</td><td>ユーザーの<em>中に</em>スキルを残すか、努力を奪うか?</td></tr>
+  <tr><td>到達範囲の拡張</td><td>届く範囲を広げるか、本人の動きを置き換えるか?</td></tr>
+  <tr><td>教える面</td><td>使われている間に教えるか、何が起きているかを隠すか?</td></tr>
+  <tr><td>長期的効果</td><td>1000回使ったあと、人は強くなっているか弱くなっているか?</td></tr>
+  <tr><td>摩擦の尊重</td><td>生産的な摩擦を残し、無駄な摩擦だけを取り除くか?</td></tr>
+</table></div>
+<h2>カタログ(v0.1)</h2>
+<p>4つの道具。それぞれ、Claudeの任意のセッションに貼り付けられるプロンプトテンプレート — 無料、即時 — に加え、独立実行用のCLIスクリプト(任意)。</p>
+<div class="cards">
+  <div class="card"><span class="tag">フォーカスレンズ</span><h3>brief</h3><p><strong>問題:</strong>AIが知っていることを知るには時間が足りない。</p><p>テーマ、時間予算、現在のコンテキストを入力。何を入れ何を切ったかの理由を示した、的を絞ったブリーフが返ってくる — 直接読める一次資料つき。</p></div>
+  <div class="card"><span class="tag">キッチンレンズ</span><h3>eat-what-you-have</h3><p><strong>問題:</strong>食品ロス(家庭食料のおよそ3分の1)。</p><p>冷蔵庫の中身を伝える。いま作れる一品が返ってくる — まもなく傷む食材と、今週用の予備献立もセットで。</p></div>
+  <div class="card"><span class="tag">平和の一手</span><h3>steelman</h3><p><strong>問題:</strong>相手の最も弱い形と戦うとき、対立は深まる。</p><p>反対意見を貼り付ける。その最も強く、誠実な形が返ってくる — 守っている価値、強化後も残る弱点、そしてあなたが受け入れねばならないものまで。</p></div>
+  <div class="card"><span class="tag">メタ道具</span><h3>build-your-own-gadget</h3><p><strong>問題:</strong>多くの人は、日々の不便が「道具化」できるとは思っていない。</p><p>不便を一つ書く。それを解く最小の道具と、設計の理屈が返ってくる — あなた自身がこの設計の動きを身につけるために。</p></div>
+</div>
+<h2>なぜ公開するのか</h2>
+<p>上の4つの道具は本題ではない。それは <em>本物のカタログが一日で作れる</em> という証 — 一人で、ポケットの中の一人のClaudeを認知道具として。本題はパターンだ:人間の限界をひとつ選び、奉仕しながら教える最小の解消法を設計し、出して、磨く。</p>
+<div class="pull" style="background: #fff7ed; border-left-color: var(--warn); color: var(--ink);"><strong>正直な注意書き。</strong>AIが折りたたむのは、人間の限界のうち「認知」の列だけ — 起草、設計、試作、調査 — それだけだ。物理、エネルギー、素材、意志、お金、観客:いずれも手つかず。これらの道具は自分の列では強い。だがドラえもんの「どこでもドア」ではない。</div>
+</main>
+</div>
+
+<!-- ============================== TIẾNG VIỆT ============================== -->
+<div class="lang-section" data-lang="vi" lang="vi">
+<section class="hero">
+  <h1>Cuộc đời: Doraemon</h1>
+  <p>Một catalog có thật về những bảo bối AI nhỏ, dựng trong một ngày, được thiết kế để mỗi cái khiến con người <em>có năng lực hơn</em>, chứ không phải kém đi.</p>
+  <span class="stamp">v0.1 · 2026-05-15 · một người sáng tạo + một Claude</span>
+</section>
+<main>
+<h2>Khung tư tưởng</h2>
+<p class="lede">Trong Doraemon, các bảo bối thật ra là cái nạng — Nobita dùng chúng để né nỗ lực, và mỗi tập phim cho thấy lối tắt tự quay lại cắn người. Catalog này lật ngược điều đó. Vẫn dạng nhỏ thân thiện bỏ túi. Đạo lý ngược lại.</p>
+<div class="pull"><strong>Mỗi bảo bối phải vượt qua bài kiểm tra tiến hóa:</strong>sau khi dùng, con người có làm được điều trước đây mình không làm được — <em>kể cả khi bảo bối không chạy</em>? Nếu không, đó là cái nạng, không phải bảo bối.</div>
+<h2>Năm bài kiểm tra</h2>
+<div class="test"><table>
+  <tr><th style="width:30%">Bài kiểm tra</th><th>Câu hỏi</th></tr>
+  <tr><td>Chuyển giao năng lực</td><td>Nó để lại kỹ năng <em>trong</em> người dùng, hay lấy đi nỗ lực của họ?</td></tr>
+  <tr><td>Mở rộng tầm với</td><td>Nó mở rộng phạm vi họ có thể chạm tới, hay thay thế chính chuyển động của họ?</td></tr>
+  <tr><td>Mặt dạy học</td><td>Nó dạy trong khi phục vụ, hay che giấu điều đang diễn ra?</td></tr>
+  <tr><td>Tác động dài hạn</td><td>Sau 1000 lần dùng, người mạnh hơn hay yếu đi?</td></tr>
+  <tr><td>Tôn trọng ma sát</td><td>Nó giữ lại ma sát hữu ích, chỉ loại bỏ ma sát vô ích?</td></tr>
+</table></div>
+<h2>Catalog (v0.1)</h2>
+<p>Bốn bảo bối. Mỗi cái là một mẫu lệnh (prompt) bạn dán vào bất kỳ phiên Claude nào — miễn phí, tức thì — kèm theo một script CLI tùy chọn để chạy độc lập.</p>
+<div class="cards">
+  <div class="card"><span class="tag">Thấu kính tập trung</span><h3>brief</h3><p><strong>Vấn đề:</strong> Không đủ thời gian để biết những gì AI biết.</p><p>Đưa vào một chủ đề, ngân sách thời gian, và bối cảnh hiện tại của bạn. Nhận lại một bản tóm tắt có trọng tâm — kèm lý do vì sao đưa vào / cắt ra, cùng các nguồn gốc bạn có thể đọc trực tiếp.</p></div>
+  <div class="card"><span class="tag">Thấu kính bếp</span><h3>eat-what-you-have</h3><p><strong>Vấn đề:</strong> Lãng phí thực phẩm (~1/3 lượng đồ ăn trong nhà).</p><p>Cho biết trong tủ lạnh có gì. Nhận lại một món có thể nấu ngay — kèm thứ sắp hỏng, và một món dự phòng cho tuần.</p></div>
+  <div class="card"><span class="tag">Nước đi hòa bình</span><h3>steelman</h3><p><strong>Vấn đề:</strong> Xung đột leo thang khi mỗi bên đả kích phiên bản yếu nhất của bên kia.</p><p>Dán vào một quan điểm đối lập. Nhận lại dạng mạnh và trung thực nhất của nó — gồm các giá trị nó phục vụ, những điểm yếu vẫn còn sau khi tăng cường, và điều bạn phải chấp nhận để thấy nó thuyết phục.</p></div>
+  <div class="card"><span class="tag">Bảo bối-meta</span><h3>build-your-own-gadget</h3><p><strong>Vấn đề:</strong> Đa số không nghĩ những phiền hà hàng ngày của mình có thể "công cụ hóa".</p><p>Mô tả một phiền hà. Nhận lại công cụ nhỏ nhất có thể hòa tan nó, kèm lập luận thiết kế — để chính bạn bắt đầu vận hành nước đi này.</p></div>
+</div>
+<h2>Tại sao công bố</h2>
+<p>Bốn bảo bối phía trên không phải mục đích. Chúng là bằng chứng rằng <em>một catalog có thật có thể dựng trong một ngày</em>, bởi một người, với một Claude làm bảo bối nhận thức trong túi. Mục đích là khuôn mẫu: chọn một giới hạn của con người, thiết kế lời giải nhỏ nhất vừa phục vụ vừa dạy, công bố, lặp lại.</p>
+<div class="pull" style="background: #fff7ed; border-left-color: var(--warn); color: var(--ink);"><strong>Một lưu ý thành thật.</strong> AI chỉ thu gọn cột "nhận thức" trong các giới hạn của con người — soạn thảo, thiết kế, dựng mẫu, nghiên cứu — và chỉ cột đó. Vật lý, năng lượng, vật liệu, ý chí, tiền, khán giả: vẫn còn nguyên. Những bảo bối này mạnh trong cột của chúng. Chúng không phải "cánh cửa thần kỳ" của Doraemon.</div>
+</main>
+</div>
+
+<footer>
+  Built 2026-05-15 · v0.1 · <code>D:\Claude\gadgets\&lt;name&gt;\</code> · translations are AI-generated; corrections welcome
+</footer>
+
+<script>
+(function() {
+  var sections = document.querySelectorAll('.lang-section');
+  var buttons  = document.querySelectorAll('.lang-bar button');
+  function show(lang) {
+    sections.forEach(function(s) { s.classList.toggle('active', s.dataset.lang === lang); });
+    buttons.forEach(function(b) { b.classList.toggle('active', b.dataset.lang === lang); });
+    document.documentElement.lang = lang;
+    if (location.hash !== '#' + lang) {
+      history.replaceState(null, '', '#' + lang);
+    }
+  }
+  buttons.forEach(function(b) {
+    b.addEventListener('click', function() { show(b.dataset.lang); });
+  });
+  var initial = (location.hash || '').replace('#','');
+  if (initial && document.querySelector('.lang-section[data-lang="' + initial + '"]')) {
+    show(initial);
+  } else {
+    var nav = (navigator.language || 'en').slice(0,2).toLowerCase();
+    if (document.querySelector('.lang-section[data-lang="' + nav + '"]')) show(nav);
+  }
+})();
+</script>
+
+</body>
+</html>
