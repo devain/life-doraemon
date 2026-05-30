@@ -12,6 +12,6 @@
  — **steelman** gives you the strongest honest version of a view you disagree with, including weaknesses that survive the steelmanning.
  — **build-your-own-gadget** is the meta-tool: describe a daily pain, get back the smallest possible tool that dissolves it.
 
- Each gadget is ~50 lines of prompt + ~50 lines of code. Free to use (paste into any Claude session). Source + write-up: https://lively-eclair-65c6c2.netlify.app/
+ Each gadget is ~50 lines of prompt + ~50 lines of code. Free to use (paste into any Claude session). Source + write-up: https://devain.github.io/life-doraemon
 
  Building gadgets that make humans stronger isn't a startup pitch. It's a craft. The world has room for more practitioners.
